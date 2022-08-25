@@ -22,18 +22,12 @@ function App() {
       date: new Date(2021, 5, 12),
     },
   ];
-  console.log(expenses[0]);
   return (
     <div>
-      <h1>Just a test</h1>
-      <ExpenseItem
-        title={expenses[0].title}
-        date={expenses[0].date}
-        amount={expenses[0].amount}
-      />
+      <ExpenseItem {...expenses[0]} />
       <ExpenseItem {...expenses[1]} />
-      {/* <ExpenseItem expense={expenses[2]} />
-      <ExpenseItem expense={expenses[3]} /> */}
+      <ExpenseItem {...expenses[2]} />
+      <ExpenseItem {...expenses[3]} />
     </div>
   );
 }
