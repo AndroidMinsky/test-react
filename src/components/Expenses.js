@@ -11,12 +11,24 @@ export default function Expenses({ data }) {
     setYear(e.target.value);
   };
 
+  const filteredData = data.filter(
+    (expense) => String(expense.date.getFullYear()) === year
+  );
+
+  let expensesContent = (
+    <p style={{ color: "white", textAlign: "center" }}>No expenses found 🤷‍♂️</p>
+  );
+
+  if (filteredData.length > 0) {
+    expensesContent = filteredData.map((expense) => (
+      <ExpenseItem {...expense} key={expense.id} />
+    ));
+  }
+
   return (
     <Card className="expenses">
       <ExpenseFilter onYearChange={yearChangeHandler} year={year} />
-      {data.map((expense) => (
-        <ExpenseItem {...expense} key={expense.id} />
-      ))}
+      {expensesContent}
     </Card>
   );
 }

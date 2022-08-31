@@ -29,7 +29,7 @@ function App() {
   const addExpense = function (data) {
     const finalData = { ...data, id: Math.random().toString() };
     setExpenses((prevState) => {
-      return [...prevState, finalData];
+      return [finalData, ...prevState];
     });
   };
 
